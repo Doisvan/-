@@ -28,7 +28,6 @@ import java.util.Map;
 @Slf4j
 @Api(tags = "员工管理")
 public class EmployeeController {
-
     @Autowired
     private EmployeeService employeeService;
     @Autowired
@@ -64,7 +63,6 @@ public class EmployeeController {
 
         return Result.success(employeeLoginVO);
     }
-
     /**
      * 退出
      *
@@ -72,11 +70,9 @@ public class EmployeeController {
      */
     @PostMapping("/logout")
     @ApiOperation("员工退出")
-
     public Result<String> logout() {
         return Result.success();
     }
-
     @PostMapping
     @ApiOperation("新增员工")
     public Result sava(@RequestBody EmployeeDTO employeeDTO){
@@ -91,6 +87,25 @@ public class EmployeeController {
         PageResult pageResult = employeeService.page(employeePageQueryDTO);
         return Result.success(pageResult);
     }
-
-
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用、禁用员工账号")
+    public Result startOrStop(@PathVariable Integer status, Long id){
+        log.info("员工状态：{}，员工id：{}",status,id);
+        employeeService.startOrStop(status,id);
+        return Result.success();
+    }
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询员工")
+    public Result getById(@PathVariable Long id){
+        log.info("员工id：{}",id);
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+    }
+    @PutMapping
+    @ApiOperation("编辑员工信息")
+    public Result update(@RequestBody EmployeeDTO employeeDTO){
+        log.info("员工信息：{}",employeeDTO);
+        employeeService.update(employeeDTO);
+        return Result.success();
+    }
 }
