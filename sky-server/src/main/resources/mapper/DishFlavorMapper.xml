@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指用户自定义的命名空间。 -->
+<mapper namespace="com.sky.mapper.DishFlavorMapper">
+    <!--
+        id="save"是唯一的标示符
+        parameterType属性指明插入时使用的参数类型
+        useGeneratedKeys="true"表示使用数据库的自动增长策略
+     -->
+    <insert id="insertBatch" parameterType="DishFlavor">
+        insert into dish_flavor (dish_id, name, value) values
+        <foreach collection="list" item="dishFlavor" separator=",">
+            (#{dishFlavor.dishId},#{dishFlavor.name},#{dishFlavor.value})
+        </foreach>
+    </insert>
+    <delete id="deleteByDishIds">
+        delete from dish_flavor where dish_id in
+        <foreach collection="ids" item="dishId" separator="," open="(" close=")">
+            #{dishId}
+        </foreach>
+    </delete>
+</mapper>
