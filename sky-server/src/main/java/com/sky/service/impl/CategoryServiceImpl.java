@@ -55,7 +55,6 @@ public class CategoryServiceImpl implements CategoryService {
         //category.setUpdateUser(BaseContext.getCurrentId());
         categoryMapper.insert(category);
     }
-
     /**
      * 分页查询
      * @param categoryPageQueryDTO
@@ -67,7 +66,6 @@ public class CategoryServiceImpl implements CategoryService {
         Page<Category> page = categoryMapper.pageQuery(categoryPageQueryDTO);
         return new PageResult(page.getTotal(), page.getResult());
     }
-
     /**
      * 根据id删除分类
      * @param id
