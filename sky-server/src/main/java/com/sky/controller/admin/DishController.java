@@ -20,14 +20,14 @@ import java.util.List;
 public class DishController {
     @Autowired
     private DishService dishService;
-    @RequestMapping
+    @PostMapping
     @ApiOperation("新增菜品")
     public Result save(@RequestBody DishDTO dishDTO) {
         log.info("新增菜品：{}", dishDTO);
         dishService.save(dishDTO);
         return Result.success();
     }
-    @RequestMapping("/page")
+    @GetMapping("/page")
     @ApiOperation("菜品分页查询")
     public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO) {
         log.info("菜品分页查询：{}", dishPageQueryDTO);

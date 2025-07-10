@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/setmeal")
-@Api("套餐管理")
+@Api(tags = "套餐管理")
 @Slf4j
 public class SetmealController {
     @Autowired
     private SetmealService setmealService;
-    @RequestMapping("/page")
+    @GetMapping("/page")
     @ApiOperation("套餐分页查询")
     public Result<PageResult> page(SetmealPageQueryDTO setmealPageQueryDTO){
         log.info("套餐分页查询：{}", setmealPageQueryDTO);
