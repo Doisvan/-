@@ -2,10 +2,10 @@ sky:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     host: dbconn.sealoshzh.site
-    port: 32054
+    port: 
     database: sky_take_out
     username: root
-    password: lnjpknnf
+    password: 
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
     access-key-id: ${OSS_ACCESS_KEY_ID}
@@ -17,6 +17,6 @@ sky:
 spring:
   redis:
     host: dbconn.sealoshzh.site
-    port: 30614
-    password: 7hx4hrcx
+    port: 
+    password: 
 
